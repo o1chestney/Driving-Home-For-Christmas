@@ -30,14 +30,25 @@ while run:
     #Event checking, so keys make the character move
     #setting the boudries (Goes after the keys[pygame.....] and (here))
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_LEFT] or keys[pygame.K_a] and x > vel:
+    if keys[pygame.K_LEFT] and x > vel:
         x -= vel
-    if keys[pygame.K_RIGHT] or keys[pygame.K_d] and x < 500 - vel - width:
+    if keys[pygame.K_a] and x > vel:
+        x -= vel
+
+    if keys[pygame.K_RIGHT] and x < 500 - vel - width:
         x += vel
-    if keys[pygame.K_UP] or keys[pygame.K_w] and y > vel:
+    if keys[pygame.K_d] and x < 500 - vel - width:
+        x += vel
+
+    if keys[pygame.K_UP] and y > vel:
         y -= vel
-    if keys[pygame.K_DOWN] or keys[pygame.K_s] and y < 500 - height - vel:
+    if keys[pygame.K_w] and y > vel:
+        y -= vel
+
+    if keys[pygame.K_DOWN] and y < 500 - height - vel:
         y += vel  
+    if keys[pygame.K_s] and y < 500 - height - vel:
+        y += vel
             
                   
     win.fill((0,0,0))
