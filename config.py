@@ -13,7 +13,6 @@ FPS = 60 # The frames per second
 
 ROAD_COLOUR = (64, 64, 64) # The background colour (temporary)
 
-WAIT_TIME = 20 
 ANIMATION_CD = 35 
 
 PLAYER_LAYER = 2
