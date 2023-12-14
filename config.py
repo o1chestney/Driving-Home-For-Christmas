@@ -1,13 +1,20 @@
-WIN_WIDTH, WIN_HEIGHT = 1920, 1080
+# This is the config file! So, for variables that will likely need changing,
+# and will be called a lot, it's just easier to make a config file where you
+# can change all occurences with one line.
 
-TILESIZE = 64
+WIN_WIDTH, WIN_HEIGHT = 0, 0 # Like with the window size, I've made use of the 
+# "fullscreen" function in the main2.py file, but if you wanted a set window size,
+# then having it in config allows you to change it without having to dig through
+# all the code.
 
-FPS = 60
+TILESIZE = 64 # The tilesize
 
-ROAD_COLOUR = (64, 64, 64)
+FPS = 60 # The frames per second
 
-WAIT_TIME = 20
-ANIMATION_CD = 35
+ROAD_COLOUR = (64, 64, 64) # The background colour (temporary)
+
+WAIT_TIME = 20 
+ANIMATION_CD = 35 
 
 PLAYER_LAYER = 2
 BLOCK_LAYER = 1
@@ -21,10 +28,10 @@ tilemap = [
     [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
     [1,0,0,0,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
     [1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
     [1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
     [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
     [1,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
     [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],

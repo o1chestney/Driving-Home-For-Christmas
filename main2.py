@@ -11,7 +11,7 @@ class Game:
         self.running = True
 
         self.screen = pygame.display.set_mode((WIN_WIDTH, # Setting the screen size
-                                              WIN_WIDTH)) # to fit the user's screen
+                                              WIN_WIDTH), pygame.FULLSCREEN) # to fit the user's screen
         self.clock=pygame.time.Clock() # For FPS and timers
 
         self.asset_loader = Asset_Loader(self) # For rendering assets
@@ -21,6 +21,7 @@ class Game:
         self.screen.fill(ROAD_COLOUR) # Temporary background which is a single colour
 
         self.all_sprites.draw(self.screen) # Drawing sprites to the screen (car, obstacles)
+
         self.clock.tick(FPS) # Setting the FPS
         pygame.display.update() # Refreshing the screen           
 
@@ -28,9 +29,9 @@ class Game:
         for i, row in enumerate(tilemap): 
             for j, column in enumerate(row):
                 if column==1: # If "1" in tilemap
-                    Block(self, j, i) # Draw obstacle
+                    Block(self, j , i ) # Draw obstacle
                 if column == 2: # If "2" in tilemap
-                    Player(self, j, i) # Draw player
+                    Player(self, j , i ) # Draw player
 
     def main_menu(self): # For the menu
         pass
