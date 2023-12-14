@@ -1,6 +1,7 @@
 # Importing ---------------
 import pygame, sys
 
+from random import randint
 from config import *
 from sprites import *
 from asset_loader import *
@@ -32,7 +33,7 @@ class Game:
                     Block(self, j , i ) # Draw obstacle
                 if column == 2: # If "2" in tilemap
                     Player(self, j , i ) # Draw player
-
+    
     def main_menu(self): # For the menu
         pass
 
@@ -54,7 +55,8 @@ class Game:
             self.update()   # so the program works!
             
     def new(self): # For things you want from the start at the game: e.g. player
-        self.all_sprites = pygame.sprite.LayeredUpdates() # Puts the sprites on screen
+        self.all_sprites = pygame.sprite.LayeredUpdates() # Adds the sprites to a group
+        self.blocks = pygame.sprite.LayeredUpdates() # Adds the blocks to a group
 
         self.createTilemap() # Creates a tilemap
 
