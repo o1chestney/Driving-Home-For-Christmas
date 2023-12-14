@@ -7,7 +7,8 @@ import pygame
 #i can add these functions to existing functions if they have the same purpose just let me know where theyre needed
 #the music sounds low quality because github wont let me upload the uncompressed version but i have it if we need it
 
-
+#required for the file to run
+pygame.init()
 
 #defining sounds
 crash = pygame.mixer.Sound('crash.wav')
