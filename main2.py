@@ -30,9 +30,20 @@ class Game:
         for i, row in enumerate(tilemap): 
             for j, column in enumerate(row):
                 if column==1: # If "1" in tilemap
-                    Block(self, j , i ) # Draw obstacle
-                if column == 2: # If "2" in tilemap
+                    Block(self, j , i, "barrier_top") # Draw top barrier
+                if column==2: # #barrier_left
+                    pass
+                if column == 3: # barrier_right
+                    Block(self, j, i, "finish") # Finish line
+                if column == 4: # barrier_bottom
+                    pass
+                if column == "P": # If "P" in tilemap
                     Player(self, j , i ) # Draw player
+                
+                if column == 5:
+                    Block(self, j, i, "top_road")
+                if column == 6:
+                    Block(self, j, i, "bottom_road")
     
     def main_menu(self): # For the menu
         pass

@@ -13,21 +13,6 @@ class Spritesheet:
 class Asset_Loader:
     def __init__(self, game):
         self.game = game
-        self.right_width = 49     # Setting the width of the player facing right
-        self.right_height = 28    # Setting the height of the player facing right
-
-        self.width = 35          # Setting the width of the player
-        self.height = 30         # Setting the height of the player
-        
-        # IMAGES
-        self.player_image = pygame.image.load("Assets/Car/Car-Right.png").convert_alpha()
-        
-        
-        self.car_up_image = pygame.image.load("Assets/Car/Car_up.png").convert_alpha()
-        
-
-        self.car_down_image = pygame.image.load("Assets/Car/Car_down.png").convert_alpha()
-        
 
         # Car animation
         self.car_right_sheet = Spritesheet("Assets/Car/Car-spritesheet.png")       # Gets the spritesheet
@@ -54,3 +39,8 @@ class Asset_Loader:
                                 Spritesheet.get_sprite(self.car_up_sheet, 35, 30, self.width, self.height), 
                                 Spritesheet.get_sprite(self.car_up_sheet, 0, 60, self.width, self.height),   
                                 Spritesheet.get_sprite(self.car_up_sheet, 35, 60, self.width, self.height)]           
+        
+        # Map
+        self.tilemap = Spritesheet("Assets/Map/Tilemap.png") # Gets the spritesheet
+
+        self.barrier_top = pygame.image.load("Assets/Car/Car-Right.png").convert_alpha()

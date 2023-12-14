@@ -138,19 +138,23 @@ class Player(pygame.sprite.Sprite):# Creating the player class
                     self.rect.y = hits[0].rect.bottom
 
 class Block(pygame.sprite.Sprite): # Creating the block class
-    def __init__(self, game, x, y): # Initialising it
+    def __init__(self, game, x, y, block_type): # Initialising it
         self.game = game # Calling
         self._layer = BLOCK_LAYER # Setting the layer for the block objects
         self.groups = self.game.all_sprites, self.game.blocks # Adding all groups to a big group
         pygame.sprite.Sprite.__init__(self, self.groups) # Initialises the sprite 
 
+        self.type = block_type
         self.x=x*TILESIZE    # Setting the x coordinate of the block
         self.y=y*TILESIZE    # Setting the y coordinate of the block
         self.width=TILESIZE  # Setting the width of the block
         self.height=TILESIZE # Setting the height of the block
 
         self.image = pygame.Surface([self.width, self.height]) # Creating a temporary square
-        self.image.fill("red")  # Filling it with red
+        if block_type == "border":
+            self.image.fill("red")  # Filling it with red
+        elif block_type == "finish":
+            self.image.fill("green")
 
         self.rect=self.image.get_rect() # Creating a rect for collision
         self.rect.x=self.x # Setting the rect x coordinate
