@@ -1,10 +1,17 @@
 # Importing ---------------
-import pygame, sys
+import pygame, sys, random
 
-from random import randint
 from config import *
 from sprites import *
 from asset_loader import *
+
+# NOTE TO FIRST YEARS:
+# I'm sorry I've not been the best with communication! It's not been a great week for me,
+# but Oliver your code looks great! 
+# It's very impressive you were able to make the menu and everything, I'm sorry I kind of went off on my own
+# I think it would benefit from some commenting though, and Layla the code for the music is great! You've
+# both done very well despite the lack of communication on my end. Idk if you'll even see this, but if you do, 
+# have a great half term & happy holidays! 
 
 # Running the game --------------------------------------------------------
 class Game:
@@ -29,21 +36,31 @@ class Game:
     def createTilemap(self): # Creating the tile map
         for i, row in enumerate(tilemap): 
             for j, column in enumerate(row):
+                if column == 0:
+                    if random.randint(1,2) == 1:
+                        Road_Block(self, j, i, "road_2")
+                    else:
+                        Road_Block(self, j, i, "road_1")
                 if column==1: # If "1" in tilemap
                     Block(self, j , i, "barrier_top") # Draw top barrier
                 if column==2: # #barrier_left
-                    pass
-                if column == 3: # barrier_right
+                    Block(self, j , i, "barrier_left") # Draw leftbarrier
+                if column == 3: 
                     Block(self, j, i, "finish") # Finish line
                 if column == 4: # barrier_bottom
-                    pass
+                    Block(self, j , i, "barrier_bottom") # Draw bottom barrier
                 if column == "P": # If "P" in tilemap
+                    Road_Block(self, j, i, "road_1")
                     Player(self, j , i ) # Draw player
-                
                 if column == 5:
-                    Block(self, j, i, "top_road")
+                    Road_Block(self, j, i, "top_road_barrier")
                 if column == 6:
-                    Block(self, j, i, "bottom_road")
+                    Road_Block(self, j, i, "bottom_road")
+                if column == 7:
+                    Road_Block(self, j, i, "middle_road")
+                if column == 8:
+                    Block(self, j, i, "path")
+
     
     def main_menu(self): # For the menu
         pass
@@ -68,6 +85,7 @@ class Game:
     def new(self): # For things you want from the start at the game: e.g. player
         self.all_sprites = pygame.sprite.LayeredUpdates() # Adds the sprites to a group
         self.blocks = pygame.sprite.LayeredUpdates() # Adds the blocks to a group
+        self.road_blocks = pygame.sprite.LayeredUpdates()
 
         self.createTilemap() # Creates a tilemap
 

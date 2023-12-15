@@ -151,8 +151,18 @@ class Block(pygame.sprite.Sprite): # Creating the block class
         self.height=TILESIZE # Setting the height of the block
 
         self.image = pygame.Surface([self.width, self.height]) # Creating a temporary square
-        if block_type == "border":
+        if block_type == "barrier_top":
+            self.image = self.game.asset_loader.barrier_top
+
+        elif block_type == "barrier_left":
             self.image.fill("red")  # Filling it with red
+
+        elif block_type == "barrier_bottom":
+            self.image.fill("red")  # Filling it with red
+        
+        elif block_type == "path":
+            self.image = self.game.asset_loader.path
+            
         elif block_type == "finish":
             self.image.fill("green")
 
@@ -160,24 +170,38 @@ class Block(pygame.sprite.Sprite): # Creating the block class
         self.rect.x=self.x # Setting the rect x coordinate
         self.rect.y=self.y # Setting the rect y coordinate
 
-class Random_block(pygame.sprite.Sprite): # Creating the block class
-    def __init__(self, game, x, y): # Initialising it
+class Road_Block(pygame.sprite.Sprite): # Creating the block class
+    def __init__(self, game, x, y, block_type): # Initialising it
         self.game = game # Calling
         self._layer = BLOCK_LAYER # Setting the layer for the block objects
-        self.groups = self.game.all_sprites # Adding all groups to a big group
+        self.groups = self.game.all_sprites, self.game.road_blocks # Adding all groups to a big group
         pygame.sprite.Sprite.__init__(self, self.groups) # Initialises the sprite 
 
-        self.x=x*TILESIZE    # Setting the x coordinate of the block
-        self.y=y*TILESIZE    # Setting the y coordinate of the block
-        self.width=TILESIZE  # Setting the width of the block
-        self.height=TILESIZE # Setting the height of the block
+        self.type = block_type
+        self.x = x*TILESIZE    # Setting the x coordinate of the block
+        self.y = y*TILESIZE    # Setting the y coordinate of the block
+        self.width =TILESIZE  # Setting the width of the block
+        self.height =TILESIZE # Setting the height of the block
 
         self.image = pygame.Surface([self.width, self.height]) # Creating a temporary square
-        self.image.fill("blue")  # Filling it with red
 
-        self.rect=self.image.get_rect() # Creating a rect for collision
+        if block_type == "top_road_barrier":
+            self.image = self.game.asset_loader.top_road_barrier
+        
+        elif block_type == "bottom_road":
+            self.image = self.game.asset_loader.bottom_road
+        
+        elif block_type == "road_1":
+            self.image = self.game.asset_loader.road_1
+        
+        elif block_type == "road_2":
+            self.image = self.game.asset_loader.road_2
+            
+        elif block_type == "middle_road":
+            self.image = self.game.asset_loader.middle_road
 
-# class CameraGroup(pygame.sprite.Group):
-#     def __init__(self):
-#         super().__init__()
-#         self.display_surface = pygame.display.get_surface()
+
+
+        self.rect=self.image.get_rect() # Creating a rect
+        self.rect.x = self.x
+        self.rect.y = self.y
